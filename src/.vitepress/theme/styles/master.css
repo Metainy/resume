@@ -1,0 +1,10 @@
+/* Imports */
+@import "vars.css";
+@import "base.css";
+@import "utils.css";
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

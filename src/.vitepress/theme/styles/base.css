@@ -1,0 +1,11 @@
+/**
+ * Headings
+ * -------------------------------------------------------------------------- */
+.vp-doc h2 {
+    font-size: 28px;
+    border-top: none;
+}
+
+.header-anchor {
+    visibility: hidden;
+}

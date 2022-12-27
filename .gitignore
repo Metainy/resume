@@ -1,0 +1,15 @@
+node_modules
+dist
+src/.vitepress/cache
+
+# Env files
+.env
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

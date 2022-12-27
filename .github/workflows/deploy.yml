@@ -1,0 +1,51 @@
+name: Deploy
+
+# Controls when the action will run
+on:
+  # Triggers the workflow on push events but only for the main branch
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  #workflow_dispatch
+
+# Jobs that can run sequentially or in parallel
+jobs:
+
+  # This workflow contains a single job called "SFTP"
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Node Setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+      - run: npm i
+      - run: npm run build --if-present
+      - run: npm test --if-present
+
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          # Server username
+          username: ${{ DROPLET_USERNAME }}
+          # Server IP or domain
+          server: ${{ DROPLET_SERVER }}
+          # Port
+          port: 22
+          # Server's private key
+          ssh_private_key: ${{ secrets.DROPLET_PRIVATE_KEY }}
+          # Source to take files from, will take all files under this path. Default is ./*
+          local_path: ./dist/*
+          # Destination directory, where are files will be copied to
+          remote_path: /var/www/resume.metainy.me/public_html
+          # Will delete all files in the remote path before uploading
+          delete_remote_files: true
+          # SFTP args
+          sftpArgs: "-o ConnectTimeout=5"
