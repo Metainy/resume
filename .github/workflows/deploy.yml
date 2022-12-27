@@ -34,9 +34,9 @@ jobs:
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           # Server username
-          username: ${{ DROPLET_USERNAME }}
+          username: ${{ secrets.DROPLET_USERNAME }}
           # Server IP or domain
-          server: ${{ DROPLET_SERVER }}
+          server: ${{ secrets.DROPLET_SERVER }}
           # Port
           port: 22
           # Server's private key
