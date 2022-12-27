@@ -4,7 +4,7 @@ aside: false
 
 introduction:
   name: Mahmoud Samy El Metainy
-  photo: /public/images/photo.jpg
+  photo: /images/photo.jpg
   socials:
   - icon: bi-github
     url: https://github.com/Metainy
