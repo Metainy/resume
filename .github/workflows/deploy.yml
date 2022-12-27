@@ -1,4 +1,4 @@
-name: Deploy
+name: Deployment
 
 # Controls when the action will run
 on:
@@ -13,9 +13,10 @@ on:
 jobs:
 
   # This workflow contains a single job called "SFTP"
-  deploy:
+  Production:
 
     runs-on: ubuntu-latest
+    environment: Production
 
     steps:
       # Checks-out your repository, so your job can access it
