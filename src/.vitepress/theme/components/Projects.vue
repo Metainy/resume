@@ -52,7 +52,7 @@ export default {
 .project-container {
 
   @apply flex items-stretch relative rounded p-4 no-underline space-x-6 text-inherit hover:text-inherit
-  border border-gray-300 dark:border-gray-600 hover:border-transparent
+  border border-gray-300 dark:border-gray-600 hover:border-transparent dark:hover:border-transparent
   hover:bg-gray-100 dark:hover:bg-gray-700;
 }
 
