@@ -1,18 +1,62 @@
 backend:
   name: github
   repo: Metainy/resume
-media_folder: "src/public/media"
-public_folder: "/media"
+  branch: main
+media_folder: "src/docs/public/uploads"
+public_folder: "/uploads"
 publish_mode: editorial_workflow
 collections:
-  - name: "resume"
-    label: "Resume"
-    file: "src/docs/index.md"
-    delete: false
-    fields:
-      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Featured Image", name: "thumbnail", widget: "image" }
-      - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
-      - { label: "Body", name: "body", widget: "markdown" }
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "Resume"
+        name: "resume"
+        file: "src/docs/index.md"
+        delete: false
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: true }
+          - { label: "Side", name: "side", widget: "hidden", default: false }
+
+          - label: Introduction
+            name: introduction
+            widget: object
+            collapsed: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string", required: true }
+              - { label: "Photo", name: "photo", widget: "image", required: true }
+              - label: Social Icons
+                name: socials
+                widget: list
+                minimize_collapsed: true
+                label_singular: "Social Icon"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+
+          - label: Skills
+            name: skills
+            widget: list
+            minimize_collapsed: true
+            label_singular: "Skill"
+            fields:
+              - { label: "Text", name: "text", widget: "string", required: true }
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "Category", value: "category" }
+                  - { label: "Featured", value: "featured" }
+              - { label: "Icon", name: "icon", widget: "string", required: false }
+
+          - label: Soft Skills
+            name: softSkills
+            widget: list
+            minimize_collapsed: true
+            label_singular: "Soft Skill"
+            fields:
+              - { label: "Text", name: "text", widget: "string", required: true }
+              - { label: "Featured", name: "featured", widget: "boolean", required: true }
+          - { label: "Body", name: body, widget: markdown, required: false }
