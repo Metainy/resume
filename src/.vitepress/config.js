@@ -52,7 +52,7 @@ export default defineConfig({
         outlineTitle: " ",
 
         socialLinks: [
-            { icon: "github", link: "https://github.com/GamersLounge" }
+            { icon: "github", link: "https://github.com/Metainy" }
         ],
 
         nav: [
